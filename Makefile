@@ -40,6 +40,7 @@ LIB_OBJS  = $(LIB_SRCS:%.c=$(OBJ_DIR)/%.o)
 all: ${TARGET_LIB}
 
 $(TARGET_LIB): $(LIB_OBJS)
+	mkdir -p $(dir $@)
 	$(CC) -shared $^ $(PYTHON_INCLUDES) $(INCLUDES) -o $@.so
 
 $(OBJ_DIR)/%.o:%.c
