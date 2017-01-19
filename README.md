@@ -22,6 +22,7 @@ API_DIR=path/to/the/api/dir make
 * In the Python directory are 2 python files:
 
 VL53L0X.py - This contains the python ctypes interface to the ST Library
+
 VL53L0X_example.py - This contains an example program that uses the interface.
 
 Eventualy I will make this an installable extension.
