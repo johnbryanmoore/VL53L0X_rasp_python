@@ -90,3 +90,15 @@ class VL53L0X(object):
         """Get distance from VL53L0X ToF Sensor"""
         return tof.getDistance()
 
+    # This function included to show how to access the ST library directly
+    # from python instead of through the simplified interface
+    def get_timing(self):
+        Dev = POINTER(c_void_p)
+        Dev = tof.VL53L0X_get_dev()
+        budget = c_uint(0)
+        budget_p = pointer(budget)
+        Status =  tof.VL53L0X_GetMeasurementTimingBudgetMicroSeconds(Dev, budget_p)
+        if (Status == 0):
+            return (budget.value + 1000)
+        else:
+            return 0
