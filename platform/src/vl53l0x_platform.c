@@ -37,11 +37,8 @@ static int (*i2c_read_func)(uint8_t address, uint8_t reg,
 static int (*i2c_write_func)(uint8_t address, uint8_t reg,
                     uint8_t *list, uint8_t length) = NULL;
 
-static VL53L0X_DEV current_Dev;
-
 void VL53L0X_init(VL53L0X_DEV Dev)
 {
-    current_Dev = Dev;    
 }
 
 void VL53L0X_set_i2c(void *read_func, void *write_func)
@@ -50,19 +47,19 @@ void VL53L0X_set_i2c(void *read_func, void *write_func)
     i2c_write_func = write_func;
 }
 
-VL53L0X_DEV VL53L0X_get_dev()
-{
-    return current_Dev;
-}
-
 static int i2c_write(VL53L0X_DEV Dev, uint8_t cmd,
                     uint8_t *data, uint8_t len)
 {
     if (i2c_write_func != NULL)
     {
-        i2c_write_func(Dev->I2cDevAddr, cmd, data, len);
-                
-        return VL53L0X_ERROR_NONE;
+        if (i2c_write_func(Dev->I2cDevAddr, cmd, data, len) < 0)
+        {
+            return VL53L0X_ERROR_CONTROL_INTERFACE;
+        }
+        else    
+        {     
+            return VL53L0X_ERROR_NONE;
+        }
     }
     else
     {
@@ -76,9 +73,14 @@ static int i2c_read(VL53L0X_DEV Dev, uint8_t cmd,
 {
     if (i2c_read_func != NULL)
     {
-        i2c_read_func(Dev->I2cDevAddr, cmd, data, len);
-
-        return VL53L0X_ERROR_NONE;
+        if (i2c_read_func(Dev->I2cDevAddr, cmd, data, len) < 0)
+        {
+            return VL53L0X_ERROR_CONTROL_INTERFACE;
+        }
+        else    
+        {     
+            return VL53L0X_ERROR_NONE;
+        }
     }
     else
     {
