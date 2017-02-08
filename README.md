@@ -29,7 +29,10 @@ Notes on Multiple sensor support:
 
 * To compile the lib on your raspberry pi use following commands:
 ```bash
-API_DIR=path/to/the/api/dir make
+cd ~
+git clone https://github.com/johnbryanmoore/VL53L0X_rasp_python.git
+cd VL53L0X_rasp_python
+make
 ```
 
 * In the Python directory are 2 python files:
