@@ -35,7 +35,7 @@ cd VL53L0X_rasp_python
 make
 ```
 
-* In the Python directory are 3 python files:
+* In the Python directory are 4 python files:
 
 VL53L0X.py - This contains the python ctypes interface to the ST Library
 
