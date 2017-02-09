@@ -29,13 +29,13 @@ Notes on Multiple sensor support:
 
 * To compile the lib on your raspberry pi use following commands:
 ```bash
-cd ~
+cd your_git_directory
 git clone https://github.com/johnbryanmoore/VL53L0X_rasp_python.git
 cd VL53L0X_rasp_python
 make
 ```
 
-* In the Python directory are 2 python files:
+* In the Python directory are 3 python files:
 
 VL53L0X.py - This contains the python ctypes interface to the ST Library
 
