@@ -8,19 +8,20 @@ OUTPUT_DIR = bin
 OBJ_DIR = obj
 
 ROOT_DIR := $(shell pwd)
+API_DIR := $(ROOT_DIR)/Api
 
 TARGET_LIB = $(OUTPUT_DIR)/vl53l0x_python
 
 INCLUDES = \
 	-I$(ROOT_DIR) \
-	-I${API_DIR}/Api/core/inc \
+	-I$(API_DIR)/core/inc \
 	-I$(ROOT_DIR)/platform/inc
 
 PYTHON_INCLUDES = \
     -I/usr/include/python2.7
 
 VPATH = \
-	${API_DIR}/Api/core/src \
+	$(API_DIR)/core/src \
 	$(ROOT_DIR)/platform/src/ \
 	$(ROOT_DIR)/python_lib
 

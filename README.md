@@ -27,9 +27,12 @@ Notes on Multiple sensor support:
 
 ### Compilation
 
-* To compile the lib on your raspberry pi:
+* To compile the lib on your raspberry pi use following commands:
 ```bash
-API_DIR=path/to/the/api/dir make
+cd ~
+git clone https://github.com/johnbryanmoore/VL53L0X_rasp_python.git
+cd VL53L0X_rasp_python
+make
 ```
 
 * In the Python directory are 2 python files:
@@ -37,6 +40,11 @@ API_DIR=path/to/the/api/dir make
 VL53L0X.py - This contains the python ctypes interface to the ST Library
 
 VL53L0X_example.py - This contains an example that accesses a single sensor with the default address.
+
+VL53L0X_example_livegraph.py - This examples plots the distance data from the sensor in a live graph.
+
+Note: This example requires matplotlib. Use `sudo pip install matplotlib` to install matplotlib.
+      Also, this would need to be run using VNC on headless RPi nodes.
 
 VL53L0X_multi_example.py - This contains an example that accesses 2 sensors, setting the first to address 0x2B an the second to address 0x2D. It uses GPIOs 20 and 16 connected to the shutdown pins on the 2 sensors to control sensor activation.
 
