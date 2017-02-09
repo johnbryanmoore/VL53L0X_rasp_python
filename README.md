@@ -27,7 +27,12 @@ Notes on Multiple sensor support:
 
 ### Compilation
 
-* To compile the lib on your raspberry pi use following commands:
+* To build on raspberry pi, first make sure you have the right tools and development libraries:
+```bash
+sudo apt-get install build-essential python-dev
+```
+
+Then use following commands to clone the repository and compile:
 ```bash
 cd your_git_directory
 git clone https://github.com/johnbryanmoore/VL53L0X_rasp_python.git
