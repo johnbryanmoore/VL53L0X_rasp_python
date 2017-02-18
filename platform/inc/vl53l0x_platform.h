@@ -62,7 +62,8 @@ typedef struct {
 
     /*!< user specific field */
     uint8_t   I2cDevAddr;                /*!< i2c device address user specific field */
-    int   fd;
+    uint8_t   TCA9548A_Device;           /*!< Device number on TCA9548A I2C Multiplexer or 255 if TCA9548A not being used */
+    uint8_t   TCA9548A_Address;          /*!< Address of TCA9548A I2C Multiplexer or 255 if TCA9548A not being used */
 } VL53L0X_Dev_t;
 
 

@@ -83,15 +83,17 @@ class VL53L0X(object):
 
     object_number = 0
 
-    def __init__(self, address=0x29, **kwargs):
+    def __init__(self, address=0x29, TCA9548A_Num=255, TCA9548A_Addr=0, **kwargs):
         """Initialize the VL53L0X ToF Sensor from ST"""
         self.device_address = address
+        self.TCA9548A_Device = TCA9548A_Num
+        self.TCA9548A_Address = TCA9548A_Addr
         self.my_object_number = VL53L0X.object_number
         VL53L0X.object_number += 1
 
     def start_ranging(self, mode = VL53L0X_GOOD_ACCURACY_MODE):
         """Start VL53L0X ToF Sensor Ranging"""
-        tof_lib.startRanging(self.my_object_number, mode, self.device_address)
+        tof_lib.startRanging(self.my_object_number, mode, self.device_address, self.TCA9548A_Device, self.TCA9548A_Address)
         
     def stop_ranging(self):
         """Stop VL53L0X ToF Sensor Ranging"""

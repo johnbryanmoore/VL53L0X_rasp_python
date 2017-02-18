@@ -139,9 +139,14 @@ VL53L0X_Error WaitStopCompleted(VL53L0X_DEV Dev)
  *       33 ms timing budget 2m range
  *   High Speed Mode (decreased accuracy)
  *       20 ms timing budget 1.2m range
+ *  @param  i2c_address - I2C Address to set for this device
+ *  @param  TCA9548A_Device - Device number on TCA9548A I2C multiplexer if
+ *              being used. If not being used, set to 255.
+ *  @param  TCA9548A_Address - Address of TCA9548A I2C multiplexer if
+ *              being used. If not being used, set to 0.
  *
  *****************************************************************************/
-void startRanging(int object_number, int mode, uint8_t i2c_address)
+void startRanging(int object_number, int mode, uint8_t i2c_address, uint8_t TCA9548A_Device, uint8_t TCA9548A_Address)
 {
     VL53L0X_Error Status = VL53L0X_ERROR_NONE;
     uint32_t refSpadCount;
@@ -153,7 +158,15 @@ void startRanging(int object_number, int mode, uint8_t i2c_address)
     VL53L0X_DeviceInfo_t                DeviceInfo;
     int32_t status_int;
 
-    printf ("VL53L0X Start Ranging Object %d Address 0x%02X\n\n", object_number, i2c_address);
+    if (TCA9548A_Device < 8)
+    {
+        printf ("VL53L0X Start Ranging Object %d Address 0x%02X TCA9548A Device %d TCA9548A Address 0x%02X\n\n",
+                    object_number, i2c_address, TCA9548A_Device, TCA9548A_Address);
+    }
+    else
+    {
+        printf ("VL53L0X Start Ranging Object %d Address 0x%02X\n\n", object_number, i2c_address);
+    }
 
     if (mode >= VL53L0X_GOOD_ACCURACY_MODE &&
             mode <= VL53L0X_HIGH_SPEED_MODE &&
@@ -166,6 +179,8 @@ void startRanging(int object_number, int mode, uint8_t i2c_address)
         {
             // Initialize Comms to the default address to start
             pMyDevice[object_number]->I2cDevAddr      = VL53L0X_DEFAULT_ADDRESS;
+            pMyDevice[object_number]->TCA9548A_Device = TCA9548A_Device;
+            pMyDevice[object_number]->TCA9548A_Address = TCA9548A_Address;
 
             VL53L0X_init(pMyDevice[object_number]);
             /*
