@@ -64,9 +64,9 @@ VL53L0X_example_livegraph.py - This example plots the distance data from a singl
 
 VL53L0X_multi_example.py - This example accesses 2 sensors, setting the first to address 0x2B and the second to address 0x2D. It uses GPIOs 20 and 16 connected to the shutdown pins on the 2 sensors to control sensor activation.
 
-![VL53L0X_multi_example.py Diagram](https://github.com/johnbryanmoore/VL53L0X_rasp_python/VL53L0X_Mutli_Rpi3_bb.jpg "Fritzing Diagram for VL53L0X_multi_example.py")
+![VL53L0X_multi_example.py Diagram](https://raw.githubusercontent.com/johnbryanmoore/VL53L0X_rasp_python/master/VL53L0X_Mutli_Rpi3_bb.jpg "Fritzing Diagram for VL53L0X_multi_example.py")
 
 VL53L0X_TCA9548A_example.py - This example accesses 2 sensors through a TCA9548A I2C Multiplexer with the first connected to bus 1 and the second on bus 2 on the TCA9548A.
 
-![VL53L0X_TCA9548A_example.py Diagram](https://github.com/johnbryanmoore/VL53L0X_rasp_python/VL53L0X_TCA9548A_Rpi3_bb.jpg "Fritzing Diagram for VL53L0X_TCA9548A_example.py")
+![VL53L0X_TCA9548A_example.py Diagram](https://raw.githubusercontent.com/johnbryanmoore/VL53L0X_rasp_python/master/VL53L0X_TCA9548A_Rpi3_bb.jpg "Fritzing Diagram for VL53L0X_TCA9548A_example.py")
 
