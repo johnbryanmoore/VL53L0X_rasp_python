@@ -53,4 +53,5 @@ VL53L0X sensor for raspberry PI.
       ext_modules=[extension],
       package_dir={'': 'python'},
       py_modules=['VL53L0X'],
+      requires=['smbus2'],
       cmdclass={'build_ext': build_ext})

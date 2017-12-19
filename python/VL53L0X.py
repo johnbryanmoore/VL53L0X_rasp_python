@@ -24,7 +24,7 @@
 
 import time
 from ctypes import *
-import smbus
+import smbus2 as smbus
 
 VL53L0X_GOOD_ACCURACY_MODE      = 0   # Good Accuracy mode
 VL53L0X_BETTER_ACCURACY_MODE    = 1   # Better Accuracy mode
