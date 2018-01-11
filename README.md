@@ -39,9 +39,9 @@ Notes on using TCA9548A I2C Multiplexer:
 ### Installation
 ```bash
 # Python2
-pip2 install git+https://github.com/johnbryanmoore/VL53L0X_rasp_python.git
+pip2 install git+https://github.com/grantramsay/VL53L0X_rasp_python.git
 # Python3
-pip3 install git+https://github.com/johnbryanmoore/VL53L0X_rasp_python.git
+pip3 install git+https://github.com/grantramsay/VL53L0X_rasp_python.git
 ```
 
 ### Compilation
