@@ -157,9 +157,8 @@ class VL53L0X:
             return 0
 
     def configure_gpio_interrupt(
-            self, proximity_alarm_type: Vl53l0xGpioAlarmType = Vl53l0xGpioAlarmType.THRESHOLD_CROSSED_LOW,
-            interrupt_polarity: Vl53l0xInterruptPolarity = Vl53l0xInterruptPolarity.HIGH,
-            threshold_low_mm: int = 250, threshold_high_mm: int = 500):
+            self, proximity_alarm_type=Vl53l0xGpioAlarmType.THRESHOLD_CROSSED_LOW,
+            interrupt_polarity=Vl53l0xInterruptPolarity.HIGH, threshold_low_mm=250, threshold_high_mm=500):
         """
         Configures a GPIO interrupt from device, be sure to call "clear_interrupt" after interrupt is processed.
         """
