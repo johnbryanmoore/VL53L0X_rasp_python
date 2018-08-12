@@ -38,11 +38,11 @@ i2cbus = smbus.SMBus(1)
 def i2c_read(address, reg, data_p, length):
     ret_val = 0;
     result = []
- 
+
     try:
         result = i2cbus.read_i2c_block_data(address, reg, length)
     except IOError:
-        ret_val = -1; 
+        ret_val = -1;
 
     if (ret_val == 0):
         for index in range(length):
@@ -57,10 +57,14 @@ def i2c_write(address, reg, data_p, length):
 
     for index in range(length):
         data.append(data_p[index])
-    try:
-        i2cbus.write_i2c_block_data(address, reg, data)
-    except IOError:
-        ret_val = -1; 
+
+    if data:
+        try:
+            i2cbus.write_i2c_block_data(address, reg, data)
+        except IOError:
+            ret_val = -1;
+        except OverflowError:
+            ret_val = -1
 
     return ret_val
 
