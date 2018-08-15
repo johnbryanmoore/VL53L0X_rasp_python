@@ -60,10 +60,14 @@ def i2c_write(address, reg, data_p, length):
 
     for index in range(length):
         data.append(data_p[index])
-    try:
-        i2cbus.write_i2c_block_data(address, reg, data)
-    except IOError:
-        ret_val = -1
+
+    if data:
+        try:
+            i2cbus.write_i2c_block_data(address, reg, data)
+        except IOError:
+            ret_val = -1
+        except OverflowError:
+            ret_val = -1
 
     return ret_val
 
