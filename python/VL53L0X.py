@@ -21,9 +21,14 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-from ctypes import CDLL, CFUNCTYPE, POINTER, c_int, c_uint, pointer, c_ubyte, c_uint8, c_uint32
-import smbus2 as smbus
+import os
+
+from ctypes import (CDLL, CFUNCTYPE, POINTER,
+                    c_int, c_uint, pointer, c_ubyte, c_uint8, c_uint32)
 import site
+import smbus2 as smbus
+
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 class Vl53l0xError(RuntimeError):
@@ -66,7 +71,8 @@ _I2C_READ_FUNC = CFUNCTYPE(c_int, c_ubyte, c_ubyte, POINTER(c_ubyte), c_ubyte)
 _I2C_WRITE_FUNC = CFUNCTYPE(c_int, c_ubyte, c_ubyte, POINTER(c_ubyte), c_ubyte)
 
 # Load VL53L0X shared lib
-_POSSIBLE_LIBRARY_LOCATIONS = ['../bin'] + site.getsitepackages()
+_POSSIBLE_LIBRARY_LOCATIONS = ([os.path.join(ROOT_DIR, 'bin/')] +
+                               site.getsitepackages())
 for lib_location in _POSSIBLE_LIBRARY_LOCATIONS:
     try:
         _TOF_LIBRARY = CDLL(lib_location + "/vl53l0x_python.so")
