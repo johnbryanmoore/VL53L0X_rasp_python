@@ -39,9 +39,9 @@ Notes on using TCA9548A I2C Multiplexer:
 ### Installation
 ```bash
 # Python2
-pip2 install git+https://github.com/w4-jonghoon/VL53L0X_rasp_python.git
+pip2 install git+https://github.com/grantramsay/VL53L0X_rasp_python.git
 # Python3
-pip3 install git+https://github.com/w4-jonghoon/VL53L0X_rasp_python.git
+pip3 install git+https://github.com/grantramsay/VL53L0X_rasp_python.git
 ```
 
 ### Compilation
@@ -54,7 +54,7 @@ sudo apt-get install build-essential python-dev
 Then use following commands to clone the repository and compile:
 ```bash
 cd your_git_directory
-git clone https://github.com/w4-jonghoon/VL53L0X_rasp_python.git
+git clone https://github.com/grantramsay/VL53L0X_rasp_python.git
 cd VL53L0X_rasp_python
 make
 ```
@@ -69,9 +69,9 @@ VL53L0X_example_livegraph.py - This example plots the distance data from a singl
 
 VL53L0X_multi_example.py - This example accesses 2 sensors, setting the first to address 0x2B and the second to address 0x2D. It uses GPIOs 20 and 16 connected to the shutdown pins on the 2 sensors to control sensor activation.
 
-![VL53L0X_multi_example.py Diagram](https://raw.githubusercontent.com/johnbryanmoore/VL53L0X_rasp_python/master/VL53L0X_Mutli_Rpi3_bb.jpg "Fritzing Diagram for VL53L0X_multi_example.py")
+![VL53L0X_multi_example.py Diagram](https://raw.githubusercontent.com/grantramsay/VL53L0X_rasp_python/master/VL53L0X_Mutli_Rpi3_bb.jpg "Fritzing Diagram for VL53L0X_multi_example.py")
 
 VL53L0X_TCA9548A_example.py - This example accesses 2 sensors through a TCA9548A I2C Multiplexer with the first connected to bus 1 and the second on bus 2 on the TCA9548A.
 
-![VL53L0X_TCA9548A_example.py Diagram](https://raw.githubusercontent.com/johnbryanmoore/VL53L0X_rasp_python/master/VL53L0X_TCA9548A_Rpi3_bb.jpg "Fritzing Diagram for VL53L0X_TCA9548A_example.py")
+![VL53L0X_TCA9548A_example.py Diagram](https://raw.githubusercontent.com/grantramsay/VL53L0X_rasp_python/master/VL53L0X_TCA9548A_Rpi3_bb.jpg "Fritzing Diagram for VL53L0X_TCA9548A_example.py")
 

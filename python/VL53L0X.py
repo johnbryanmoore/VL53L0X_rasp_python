@@ -22,13 +22,11 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 import os
-
 from ctypes import (CDLL, CFUNCTYPE, POINTER,
-                    c_int, c_uint, pointer, c_ubyte, c_uint8, c_uint32)
-import site
+                    c_int, pointer, c_ubyte, c_uint8, c_uint32)
 import smbus2 as smbus
 
-ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+THIS_FILE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
 class Vl53l0xError(RuntimeError):
@@ -71,16 +69,15 @@ _I2C_READ_FUNC = CFUNCTYPE(c_int, c_ubyte, c_ubyte, POINTER(c_ubyte), c_ubyte)
 _I2C_WRITE_FUNC = CFUNCTYPE(c_int, c_ubyte, c_ubyte, POINTER(c_ubyte), c_ubyte)
 
 # Load VL53L0X shared lib
-_POSSIBLE_LIBRARY_LOCATIONS = ([os.path.join(ROOT_DIR, 'bin/')] +
-                               site.getsitepackages())
+# If built locally it will be in bin folder, if installed it will be next to the this file.
+_POSSIBLE_LIBRARY_LOCATIONS = [THIS_FILE_DIR, os.path.join(THIS_FILE_DIR, '..', 'bin')]
 for lib_location in _POSSIBLE_LIBRARY_LOCATIONS:
-    try:
-        _TOF_LIBRARY = CDLL(lib_location + "/vl53l0x_python.so")
+    tof_lib = os.path.join(lib_location, "vl53l0x_python.so")
+    if os.path.isfile(tof_lib):
+        _TOF_LIBRARY = CDLL(tof_lib)
         break
-    except OSError:
-        pass
 else:
-    raise OSError('Could not find vl53l0x_python.so')
+    raise FileNotFoundError('Could not find vl53l0x_python.so (have you built it?)')
 
 
 class VL53L0X:
@@ -154,7 +151,7 @@ class VL53L0X:
     # This function included to show how to access the ST library directly
     # from python instead of through the simplified interface
     def get_timing(self):
-        budget = c_uint(0)
+        budget = c_uint32(0)
         budget_p = pointer(budget)
         status = _TOF_LIBRARY.VL53L0X_GetMeasurementTimingBudgetMicroSeconds(self._dev, budget_p)
         if status == 0:

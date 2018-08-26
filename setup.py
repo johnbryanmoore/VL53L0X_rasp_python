@@ -46,7 +46,7 @@ setup(name='VL53L0X_rasp_python',
       description='VL53L0X sensor for raspberry PI',
       # author='?',
       # author_email='?',
-      url='https://github.com/johnbryanmoore/VL53L0X_rasp_python',
+      url='https://github.com/grantramsay/VL53L0X_rasp_python',
       long_description='''
 VL53L0X sensor for raspberry PI.
 ''',
