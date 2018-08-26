@@ -23,7 +23,7 @@
 # SOFTWARE.
 import os
 from ctypes import (CDLL, CFUNCTYPE, POINTER,
-                    c_int, c_uint, pointer, c_ubyte, c_uint8, c_uint32)
+                    c_int, pointer, c_ubyte, c_uint8, c_uint32)
 import smbus2 as smbus
 
 THIS_FILE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -151,7 +151,7 @@ class VL53L0X:
     # This function included to show how to access the ST library directly
     # from python instead of through the simplified interface
     def get_timing(self):
-        budget = c_uint(0)
+        budget = c_uint32(0)
         budget_p = pointer(budget)
         status = _TOF_LIBRARY.VL53L0X_GetMeasurementTimingBudgetMicroSeconds(self._dev, budget_p)
         if status == 0:
