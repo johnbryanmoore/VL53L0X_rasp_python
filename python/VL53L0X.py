@@ -22,7 +22,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 import os
-import smbus
+import smbus2
 from ctypes import *
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -33,7 +33,7 @@ VL53L0X_BEST_ACCURACY_MODE = 2  # Best Accuracy mode
 VL53L0X_LONG_RANGE_MODE = 3  # Longe Range mode
 VL53L0X_HIGH_SPEED_MODE = 4  # High Speed mode
 
-i2cbus = smbus.SMBus(1)
+i2cbus = smbus2.SMBus(1)
 
 
 # i2c bus read callback
