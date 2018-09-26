@@ -18,7 +18,7 @@ INCLUDES = \
 	-I$(ROOT_DIR)/platform/inc
 
 PYTHON_INCLUDES = \
-    -I/usr/include/python2.7
+    -I/usr/include/python3.5
 
 VPATH = \
 	$(API_DIR)/core/src \
