@@ -194,10 +194,7 @@ void startRanging(int object_number, int mode, uint8_t i2c_address, uint8_t TCA9
                 // Address requested not default so set the address.
                 // This assumes that the shutdown pin has been controlled
                 // externally to this function.
-                // TODO: Why does this function divide the address by 2? To get 
-                // the address we want we have to mutiply by 2 in the call so
-                // it gets set right
-                Status = VL53L0X_SetDeviceAddress(pMyDevice[object_number], (i2c_address * 2));
+                Status = VL53L0X_SetDeviceAddress(pMyDevice[object_number], (i2c_address));
                 pMyDevice[object_number]->I2cDevAddr      = i2c_address;
             }
 
