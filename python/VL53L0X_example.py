@@ -29,7 +29,7 @@ import VL53L0X
 tof = VL53L0X.VL53L0X()
 
 # Start ranging
-tof.start_ranging(VL53L0X.VL53L0X_BETTER_ACCURACY_MODE)
+tof.start_ranging(VL53L0X.Vl53l0xAccuracyMode.BETTER)
 
 timing = tof.get_timing()
 if (timing < 20000):
